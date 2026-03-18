@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: print ansible_os_family
+      debug:
+        msg: "OS: {{ ansible_os_family }}"
+    - name: print ansible_hostname
+      debug:
+        msg: "Hostname: {{ ansible_hostname }}"
+    - name: print ansible_hostname
+      become: true
+      file:
+        path: /tmp/ansible_exercise
+        state: directory
+    - name: final
+      debug:
+        msg: "System info gathered and directory created"
