@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Create project directory
+      file:
+        state: directory
+        path: myproject/
+    - name: Copy project files
+      copy:
+        dest: myproject/README.md
+        content: |
+          # My Project
+          Managed by Ansible
+    - name: Copy project config file
+      copy:
+        dest: myproject/config.txt
+        content: |
+          version=1.0
+    - name: debug
+      debug:
+        msg: "Project setup complete"
