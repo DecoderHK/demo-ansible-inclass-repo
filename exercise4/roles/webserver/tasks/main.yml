@@ -10,9 +10,9 @@
     name: nginx
     state: started
     enabled: true
-- name: copy site.conf
-  become: true
+
+- name: Deploy nginx site config
   template:
     src: site.conf.j2
     dest: /etc/nginx/conf.d/site.conf
-    mode: '0644'
+  notify: restart nginx
